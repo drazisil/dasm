@@ -1,5 +1,5 @@
 {
-    "name": "specialrobot",
+    "name": "dasm",
     "version": "0.1.0",
     "description": "",
     "main": "dist/index.js",
@@ -11,7 +11,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/drazisil/special-robot.git"
+        "url": "git+https://github.com/drazisil/dasm.git"
       },
       "keywords": [
         "pe",
@@ -22,9 +22,9 @@
       "author": "Drazi Crendraven <drazisil@users.noreply.github.com>",
       "license": "MIT",
       "bugs": {
-        "url": "https://github.com/drazisil/special-robot/issues"
+        "url": "https://github.com/drazisil/dasm/issues"
       },
-      "homepage": "https://github.com/drazisil/special-robot#readme",
+      "homepage": "https://github.com/drazisil/dasm#readme",
     "devDependencies": {
         "@types/eslint": "7.28.0",
         "@types/jest": "26.0.24",
