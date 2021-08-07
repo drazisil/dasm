@@ -1,5 +1,5 @@
 {
-    "name": "please_rename_me",
+    "name": "specialrobot",
     "version": "0.1.0",
     "description": "",
     "main": "dist/index.js",
@@ -9,7 +9,22 @@
         "start": "npm run build && node --trace-warnings dist/index.js",
         "test": "jest"
     },
-    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/drazisil/special-robot.git"
+      },
+      "keywords": [
+        "pe",
+        "coff",
+        "assembly",
+        "re"
+      ],
+      "author": "Drazi Crendraven <drazisil@users.noreply.github.com>",
+      "license": "MIT",
+      "bugs": {
+        "url": "https://github.com/drazisil/special-robot/issues"
+      },
+      "homepage": "https://github.com/drazisil/special-robot#readme",
     "devDependencies": {
         "@types/eslint": "7.28.0",
         "@types/jest": "26.0.24",
