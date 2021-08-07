@@ -7,12 +7,24 @@ export interface IStatusResult {
 }
 
 export class Dasm {
-  private _filePath: string;
+  private _filePath: string = ''
   private _loadSuccess = false;
   private _lastError: Error | '' = ''
 
   constructor(filePath: string) {
     this._filePath = filePath;
+  }
+
+  private async _readFile() {
+    try {
+        const fileStats = await stat(this.filePath)
+        if (!fileStats.isFile()) {
+            this._lastError = new Error(`Not a valid file.`)
+            return
+        }
+    } catch (error) {
+        this._lastError = error
+    }
   }
 
   public static async create(filePath: string): Promise<Dasm> {
@@ -22,14 +34,10 @@ export class Dasm {
      * We have been passed a file path. Our first step should be to see if it's a valid file
      */
 
-    try {
-        const fileStats = await stat(filePath)
-        if (!fileStats.isFile()) {
-            self._lastError = new Error(`Not a valid file.`)
-            return self
-        }
-    } catch (error) {
-        self._lastError = error
+    
+    await self._readFile()
+
+    if (self._lastError) {
         return self
     }
 
