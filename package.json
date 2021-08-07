@@ -1,0 +1,29 @@
+{
+    "name": "please_rename_me",
+    "version": "0.1.0",
+    "description": "",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc --build",
+        "lint": "eslint index.ts, src/*, test/* --ext .ts",
+        "start": "npm run build && node --trace-warnings dist/index.js",
+        "test": "jest"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@types/eslint": "7.28.0",
+        "@types/jest": "26.0.24",
+        "@types/node": "14.17.9",
+        "@types/tap": "15.0.5",
+        "@typescript-eslint/eslint-plugin": "4.29.0",
+        "@typescript-eslint/parser": "4.29.0",
+        "eslint": "7.32.0",
+        "eslint-config-prettier": "8.3.0",
+        "jest": "27.0.6",
+        "jest-spec-reporter": "1.0.17",
+        "prettier": "2.3.2",
+        "ts-jest": "27.0.4",
+        "ts-node": "10.1.0",
+        "typescript": "4.3.5"
+    }
+}
