@@ -3,7 +3,7 @@ import { stat } from "fs/promises";
 export interface IStatusResult {
   loading: boolean;
   processing?: boolean;
-  lastError?: Error | ''
+  lastError: Error | ''
 }
 
 export class Dasm {
@@ -18,16 +18,18 @@ export class Dasm {
   public static async create(filePath: string): Promise<Dasm> {
     const self = new Dasm(filePath);
 
-    /** Welcome! We have just created a new Dasm class instance
+    /* Welcome! We have just created a new Dasm class instance
      * We have been passed a file path. Our first step should be to see if it's a valid file
      */
 
-    const fileStats = await stat(filePath).catch(err => {
-        self._lastError = err
-        return
-    });
-
-    if (self._lastError) {
+    try {
+        const fileStats = await stat(filePath)
+        if (!fileStats.isFile()) {
+            self._lastError = new Error(`Not a valid file.`)
+            return self
+        }
+    } catch (error) {
+        self._lastError = error
         return self
     }
 
@@ -41,6 +43,6 @@ export class Dasm {
   }
 
   public get status(): IStatusResult {
-    return { loading: this._loadSuccess };
+    return { loading: this._loadSuccess, lastError: this._lastError };
   }
 }
