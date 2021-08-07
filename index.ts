@@ -1,7 +1,7 @@
-import { helloWorld} from './src/index'
+import { Dasm} from './src/index'
 
 async function main() {
-    helloWorld()
+    const dasm = Dasm.create("./testFiles/cabview.dll")
 }
 
 Promise.all([main()])

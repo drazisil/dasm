@@ -1,6 +1,11 @@
-import { helloWorld } from '../src/index'
+import { Dasm } from '../src/index'
 
-it('returns a sample', async() => {
-    await helloWorld()
-    expect(console.log).toBeCalledWith(expect.stringMatching(/Hello/))
+describe('Dasm Core', () => {
+
+    it("should be able to be created with it's static create() method", () => {
+        const dasm = Dasm.create('dummyFile')
+
+        expect(dasm.filePath).toEqual('dummyFile')
+    
+    })
 })
