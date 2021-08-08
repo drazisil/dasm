@@ -7,7 +7,7 @@ export interface IStatusResult {
   lastError: Error | "";
 }
 
-export class Dasm extends EventEmitter {
+export class Dasm {
   private _buffer: Buffer | undefined;
   private _filePath = "";
   private _loadSuccess = false;
@@ -15,7 +15,6 @@ export class Dasm extends EventEmitter {
   private _fileHandle: FileHandle | undefined;
 
   constructor(filePath: string) {
-    super();
     this._filePath = filePath;
   }
 
