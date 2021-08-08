@@ -1,5 +1,6 @@
-import EventEmitter from "events";
-import { FileHandle, stat, open } from "fs/promises";
+import { FileHandle, open } from "fs/promises";
+import { SigDB } from "sigdb";
+
 
 export interface IStatusResult {
   loading: boolean;
@@ -14,6 +15,7 @@ export class Dasm {
   private _processSuccess = false;
   private _lastError: string = "";
   private _fileHandle: FileHandle | undefined;
+  private _sigdb = new SigDB()
   name: any;
 
   constructor(filePath: string, wasCreated: boolean = false) {
@@ -54,6 +56,14 @@ export class Dasm {
     }
 
     self._loadSuccess = true;
+
+    // Check file signature
+    const sig = self._sigdb.find(self._buffer)
+    if (sig) {
+      console.log(`file is a ${sig.name}`)
+    } else {
+      self._lastError = 'Unable to match to a supported file signature'
+    }
 
     return self;
   }

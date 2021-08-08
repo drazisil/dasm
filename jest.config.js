@@ -5,6 +5,7 @@ module.exports = {
     collectCoverageFrom: [
       'src/**/*.ts',
       '!src/ci_providers/provider_template.ts',
+      '!src/**/*.d.ts',
       '!**/node_modules/**',
       '!**/vendor/**',
     ],

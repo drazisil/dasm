@@ -28,4 +28,10 @@ describe("Dasm Core", () => {
 
     expect(dasm.status.loading).toBeTruthy();
   });
+
+  it("should have a lastError set, if unable to identify the file signature", async () => {
+    const dasm = await Dasm.create("./testFiles/128602992-c334153d-da5e-4666-8546-b0a72f342286.png");
+
+    expect(dasm.status.lastError.toString()).toMatch(/supported file/);
+  });
 });
