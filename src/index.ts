@@ -4,20 +4,21 @@ import { FileHandle, stat, open } from "fs/promises";
 export interface IStatusResult {
   loading: boolean;
   processing?: boolean;
-  lastError: Error | "";
+  lastError: string;
 }
 
 export class Dasm {
   private _buffer: Buffer | undefined;
   private _filePath = "";
   private _loadSuccess = false;
-  private _lastError: Error | "" = "";
+  private _processSuccess = false;
+  private _lastError: string = "";
   private _fileHandle: FileHandle | undefined;
   name: any;
 
   constructor(filePath: string, wasCreated: boolean = false) {
     if (!wasCreated) {
-      throw new Error("Please create a new instaance with the create() method");
+      throw new Error("Please create a new instance with the create() method");
       
     }
     this._filePath = filePath;
@@ -32,7 +33,7 @@ export class Dasm {
       this._fileHandle.close();
       return result;
     } catch (error) {
-      this._lastError = error;
+      this._lastError = error.message;
       return Buffer.alloc(0);
     }
   }
@@ -62,7 +63,7 @@ export class Dasm {
   }
 
   public get status(): IStatusResult {
-    return { loading: this._loadSuccess, lastError: this._lastError };
+    return { loading: this._loadSuccess, processing: this._processSuccess, lastError: this._lastError };
   }
 }
 
