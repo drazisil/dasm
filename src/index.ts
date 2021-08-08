@@ -1,6 +1,7 @@
 import { FileHandle, open } from "fs/promises";
 import { SigDB } from "sigdb";
 
+const sigdb = new SigDB();
 
 export interface IStatusResult {
   loading: boolean;
@@ -8,72 +9,83 @@ export interface IStatusResult {
   lastError: string;
 }
 
-export class Dasm {
-  private _buffer: Buffer | undefined;
+class Dasm {
+  private _buffer: Buffer = Buffer.alloc(0);
   private _filePath = "";
   private _loadSuccess = false;
   private _processSuccess = false;
-  private _lastError: string = "";
+  private _lastError = "";
   private _fileHandle: FileHandle | undefined;
-  private _sigdb = new SigDB()
+  private _fingerprint = "";
+
   name: any;
 
-  constructor(filePath: string, wasCreated: boolean = false) {
-    if (!wasCreated) {
-      throw new Error("Please create a new instance with the create() method");
-      
-    }
+  constructor(filePath: string, wasCreated = false) {
     this._filePath = filePath;
   }
 
-  private async _readFile() {
+  public async loadFile(): Promise<number> {
     try {
       this._fileHandle = await open(this._filePath, "r");
 
-      const result = await this._fileHandle.readFile();
+      this._buffer = await this._fileHandle.readFile();
 
       this._fileHandle.close();
-      return result;
+      this._loadSuccess = true;
+      return this._buffer.byteLength;
     } catch (error) {
       this._lastError = error.message;
-      return Buffer.alloc(0);
+      return this._buffer.byteLength;
     }
   }
 
-  public static async create(filePath: string): Promise<Dasm> {
-    const self = new Dasm(filePath, true);
-
-    /* Welcome! We have just created a new Dasm class instance
-     * We have been passed a file path. Our first step should be to see if it's a valid file
-     */
-
-    self._buffer = await self._readFile();
-
-    console.log(`Read ${self._buffer.byteLength} bytes`);
-
-    if (self._lastError) {
-      return self;
-    }
-
-    self._loadSuccess = true;
-
-    // Check file signature
-    const sig = self._sigdb.find(self._buffer)
-    if (sig) {
-      console.log(`file is a ${sig.name}`)
-    } else {
-      self._lastError = 'Unable to match to a supported file signature'
-    }
-
-    return self;
+  public setError(errorMessage: string) {
+    this._lastError = errorMessage;
   }
 
-  public get filePath(): string {
+  public setFingerprint(fingerprintName: string) {
+    this._fingerprint = fingerprintName
+  }
+
+  public getBuffer(): Buffer {
+    return this._buffer;
+  }
+
+  public getFilePath(): string {
     return this._filePath;
   }
 
-  public get status(): IStatusResult {
-    return { loading: this._loadSuccess, processing: this._processSuccess, lastError: this._lastError };
+  public getStatus(): IStatusResult {
+    return {
+      loading: this._loadSuccess,
+      processing: this._processSuccess,
+      lastError: this._lastError,
+    };
+  }
+
+  public getFingerprint() {
+    return this._fingerprint;
   }
 }
 
+export function fingerprintFile(disassembler: Dasm): string {
+  const sig = sigdb.find(disassembler.getBuffer());
+  if (sig) {
+    disassembler.setFingerprint(sig.name)
+    return sig.name;
+  } else {
+    const message = "Unsupported file signature, fingerprinting failed.";
+    disassembler.setError(message);
+    return message
+  }
+}
+
+export async function createDisassembler(inputPath: string): Promise<Dasm> {
+  const dasm = new Dasm(inputPath);
+
+  const bytesRead = await dasm.loadFile();
+
+  console.log(`Read ${bytesRead} bytes`);
+
+  return dasm;
+}

@@ -1,12 +1,16 @@
-import { Dasm } from "./src/index";
+import { createDisassembler, fingerprintFile } from "./src/index";
 
 async function main() {
   try {
-    const dasm = await Dasm.create("./testFiles/cabview.dll");
+    const dasm = await createDisassembler("./testFiles/cabview.dll");
 
-    if(!dasm.status.loading) {
-      throw new Error(dasm.status.lastError)
+    if(dasm.getStatus().loading === false) {
+      throw new Error(dasm.getStatus().lastError)
     }
+
+    const fileType = fingerprintFile(dasm)
+
+    console.log(`File type is: ${fileType}`)
   } catch (err) {
     console.error(`There was an error: ${err}`);
   }
