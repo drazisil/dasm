@@ -1,49 +1,36 @@
+import EventEmitter from "events";
 import { FileHandle, stat, open } from "fs/promises";
 
 export interface IStatusResult {
   loading: boolean;
   processing?: boolean;
-  lastError: Error | ''
+  lastError: Error | "";
 }
 
-export class Dasm {
+export class Dasm extends EventEmitter {
   private _buffer: Buffer | undefined;
-  private _filePath: string = ''
+  private _filePath = "";
   private _loadSuccess = false;
-  private _lastError: Error | '' = ''
+  private _lastError: Error | "" = "";
   private _fileHandle: FileHandle | undefined;
 
   constructor(filePath: string) {
+    super();
     this._filePath = filePath;
   }
 
   private async _readFile() {
     try {
-        const fileStats = await stat(this.filePath)
-        if (!fileStats.isFile()) {
-            this._lastError = new Error(`Not a valid file.`)
-            return
-        }
+      this._fileHandle = await open(this._filePath, "r");
+
+      const result = await this._fileHandle.readFile();
+
+      this._fileHandle.close();
+      return result
     } catch (error) {
-        this._lastError = error
+      this._lastError = error;
+      return Buffer.alloc(0)
     }
-
-    this._fileHandle = await open(this._filePath, "r").catch((err) => {
-      console.error(`Error opening ${this._filePath}: ${err}`);
-      return undefined;
-    });
-
-    if (!this._fileHandle) {
-      return console.error(`Unable to parse ${this._filePath}`);
-    }
-
-    console.log("Hi!");
-
-    this._buffer = await this._fileHandle.readFile();
-
-    this._fileHandle.close();
-
-    console.log(`Read ${this._buffer.byteLength} bytes`);
   }
 
   public static async create(filePath: string): Promise<Dasm> {
@@ -53,11 +40,12 @@ export class Dasm {
      * We have been passed a file path. Our first step should be to see if it's a valid file
      */
 
-    
-    await self._readFile()
+    self._buffer = await self._readFile();
+
+    console.log(`Read ${self._buffer.byteLength} bytes`);
 
     if (self._lastError) {
-        return self
+      return self;
     }
 
     self._loadSuccess = true;

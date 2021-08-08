@@ -16,7 +16,7 @@ describe("Dasm Core", () => {
   it("should have a lastError set, if path is not a file", async () => {
     const dasm = await Dasm.create("./testFiles");
 
-    expect(dasm.status.lastError.toString()).toMatch(/not a valid file/i)
+    expect(dasm.status.lastError.toString()).toMatch(/EISDIR/)
   });
 
 
