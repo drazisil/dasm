@@ -8,7 +8,7 @@
             "version": "0.1.0",
             "license": "MIT",
             "dependencies": {
-                "sigdb": "2.1.0"
+                "sigdb": "3.0.0"
             },
             "devDependencies": {
                 "@types/eslint": "7.28.0",
@@ -4875,9 +4875,9 @@
             }
         },
         "node_modules/sigdb": {
-            "version": "2.1.0",
-            "resolved": "https://registry.npmjs.org/sigdb/-/sigdb-2.1.0.tgz",
-            "integrity": "sha512-V672kiFCfOt+sZGJIv92E0hmb09ee3RF2gd3fB3roLfZZjAadFFDbywgyPkO/RXfk8OFJ+fhE8s6LEFqS6Cqpg==",
+            "version": "3.0.0",
+            "resolved": "https://registry.npmjs.org/sigdb/-/sigdb-3.0.0.tgz",
+            "integrity": "sha512-4lAbFCGz3CNccvrRyEZe6B8rcvBM5e8USOWnUcLh5pW3u/03qBJn135Zvs3x5RmuT98k/Ga50jREqXb47r3OeQ==",
             "hasShrinkwrap": true
         },
         "node_modules/signal-exit": {
@@ -9295,9 +9295,9 @@
             "dev": true
         },
         "sigdb": {
-            "version": "2.1.0",
-            "resolved": "https://registry.npmjs.org/sigdb/-/sigdb-2.1.0.tgz",
-            "integrity": "sha512-V672kiFCfOt+sZGJIv92E0hmb09ee3RF2gd3fB3roLfZZjAadFFDbywgyPkO/RXfk8OFJ+fhE8s6LEFqS6Cqpg=="
+            "version": "3.0.0",
+            "resolved": "https://registry.npmjs.org/sigdb/-/sigdb-3.0.0.tgz",
+            "integrity": "sha512-4lAbFCGz3CNccvrRyEZe6B8rcvBM5e8USOWnUcLh5pW3u/03qBJn135Zvs3x5RmuT98k/Ga50jREqXb47r3OeQ=="
         },
         "signal-exit": {
             "version": "3.0.3",
