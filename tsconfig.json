@@ -3,7 +3,7 @@
     "allowJs": true,
     "checkJs": true,
     "target": "ESnext",
-    "module": "commonjs",
+    "module": "es2020",
     "declaration": true,
     "sourceMap": true,
     "outDir": "dist",

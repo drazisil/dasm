@@ -1,4 +1,4 @@
-import { createDisassembler, fingerprintFile } from "./src/index";
+import { createDisassembler, fingerprintFile } from "./src/index.js";
 
 async function main() {
   try {
