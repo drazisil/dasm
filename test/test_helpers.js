@@ -1,7 +1,7 @@
-const { beforeAll, afterAll, } = require('@jest/globals')
+import { beforeAll, afterAll, jest } from "@jest/globals";
 
-const realLog = console.log
+const realLog = console.log;
 
-console.log = jest.fn()
-console.debug = jest.fn()
-console.error = jest.fn()
+console.log = jest.fn();
+console.debug = jest.fn();
+console.error = jest.fn();

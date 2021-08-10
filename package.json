@@ -5,10 +5,11 @@
     "main": "dist/index.js",
     "type": "module",
     "scripts": {
-        "build": "tsc --build",
-        "lint": "eslint index.ts, src/*, test/* --ext .ts",
-        "start": "npm run build && node --trace-warnings dist/index.js",
-        "test": "jest"
+        "lint": "eslint .",
+        "start": "node --trace-warnings index.js",
+        "test": "node --experimental-vm-modules node_modules/.bin/jest",
+        "type-check": "tsc --noEmit",
+        "type-check:watch": "npm run type-check -- --watch"
     },
     "repository": {
         "type": "git",
@@ -27,19 +28,20 @@
     },
     "homepage": "https://github.com/drazisil/dasm#readme",
     "devDependencies": {
+        "@babel/core": "7.15.0",
+        "@babel/eslint-parser": "7.15.0",
+        "@babel/preset-env": "7.15.0",
         "@types/eslint": "7.28.0",
         "@types/jest": "26.0.24",
         "@types/node": "16.4.13",
         "@types/tap": "15.0.5",
-        "@typescript-eslint/eslint-plugin": "4.29.1",
-        "@typescript-eslint/parser": "4.29.1",
         "eslint": "7.32.0",
         "eslint-config-prettier": "8.3.0",
+        "eslint-plugin-prettier": "3.4.0",
         "jest": "27.0.6",
         "jest-spec-reporter": "1.0.17",
         "prettier": "2.3.2",
         "ts-jest": "27.0.4",
-        "ts-node": "10.2.0",
         "typescript": "4.3.5"
     },
     "dependencies": {

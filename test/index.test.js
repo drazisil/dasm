@@ -1,4 +1,4 @@
-import { createDisassembler, fingerprintFile } from "../src/index";
+import { createDisassembler, fingerprintFile } from "../src/index.js";
 
 describe("Dasm Core", () => {
   it("should be returned by createDisassembler()", async () => {
@@ -26,19 +26,19 @@ describe("Dasm Core", () => {
   });
 
   it("should have a lastError set, if unable to identify the file signature", async () => {
-    const dasm = await createDisassembler("./testFiles/128602992-c334153d-da5e-4666-8546-b0a72f342286.png");
-    fingerprintFile(dasm)
+    const dasm = await createDisassembler(
+      "./testFiles/128602992-c334153d-da5e-4666-8546-b0a72f342286.png"
+    );
+    fingerprintFile(dasm);
     expect(dasm.getStatus().lastError).toMatch(/Unsupported file signature/);
   });
-
-
 });
 
-describe('fingerprintFile()', () => {
+describe("fingerprintFile()", () => {
   it("should be able to fingerprint a file", async () => {
     const dasm = await createDisassembler("./testFiles/cabview.dll");
-    fingerprintFile(dasm)
+    fingerprintFile(dasm);
 
-    expect(dasm.getFingerprint()).toMatch('dos mz executable');
+    expect(dasm.getFingerprint()).toMatch("dos mz executable");
   });
-})
+});
