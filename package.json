@@ -30,7 +30,7 @@
     "devDependencies": {
         "@babel/core": "7.16.7",
         "@babel/eslint-parser": "7.16.5",
-        "@babel/preset-env": "7.16.7",
+        "@babel/preset-env": "7.16.8",
         "@types/eslint": "8.2.2",
         "@types/node": "16.11.19",
         "@types/tap": "15.0.5",
