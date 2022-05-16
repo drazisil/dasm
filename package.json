@@ -32,7 +32,7 @@
         "@babel/eslint-parser": "7.17.0",
         "@babel/preset-env": "7.17.12",
         "@types/eslint": "8.4.2",
-        "@types/node": "16.11.35",
+        "@types/node": "16.11.36",
         "@types/tap": "15.0.7",
         "eslint": "8.15.0",
         "eslint-config-prettier": "8.5.0",
