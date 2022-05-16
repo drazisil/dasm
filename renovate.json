@@ -1,7 +1,11 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    ":disableDependencyDashboard"
   ],
+  "reviewers": [
+    "drazisil"
+  ],  
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
