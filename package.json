@@ -28,9 +28,9 @@
     },
     "homepage": "https://github.com/drazisil/dasm#readme",
     "devDependencies": {
-        "@babel/core": "7.17.12",
+        "@babel/core": "7.18.0",
         "@babel/eslint-parser": "7.17.0",
-        "@babel/preset-env": "7.17.12",
+        "@babel/preset-env": "7.18.0",
         "@types/eslint": "8.4.2",
         "@types/node": "16.11.36",
         "@types/tap": "15.0.7",
