@@ -31,7 +31,7 @@
         "@babel/core": "7.18.10",
         "@babel/eslint-parser": "7.18.9",
         "@babel/preset-env": "7.18.10",
-        "@types/eslint": "8.4.5",
+        "@types/eslint": "8.4.6",
         "@types/node": "16.11.49",
         "@types/tap": "15.0.7",
         "eslint": "8.22.0",
