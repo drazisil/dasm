@@ -41,7 +41,7 @@
         "jest-spec-reporter": "1.0.19",
         "prettier": "2.8.7",
         "ts-jest": "29.0.5",
-        "typescript": "5.0.2"
+        "typescript": "5.0.3"
     },
     "dependencies": {
         "sigdb": "3.0.1"
