@@ -16,7 +16,7 @@
                 "@babel/eslint-parser": "7.23.9",
                 "@babel/preset-env": "7.23.9",
                 "@types/eslint": "8.56.2",
-                "@types/node": "20.11.6",
+                "@types/node": "20.11.10",
                 "@types/tap": "15.0.11",
                 "eslint": "8.56.0",
                 "eslint-config-prettier": "9.1.0",
@@ -2701,9 +2701,9 @@
             "dev": true
         },
         "node_modules/@types/node": {
-            "version": "20.11.6",
-            "resolved": "https://registry.npmjs.org/@types/node/-/node-20.11.6.tgz",
-            "integrity": "sha512-+EOokTnksGVgip2PbYbr3xnR7kZigh4LbybAfBAw5BpnQ+FqBYUsvCEjYd70IXKlbohQ64mzEYmMtlWUY8q//Q==",
+            "version": "20.11.10",
+            "resolved": "https://registry.npmjs.org/@types/node/-/node-20.11.10.tgz",
+            "integrity": "sha512-rZEfe/hJSGYmdfX9tvcPMYeYPW2sNl50nsw4jZmRcaG0HIAb0WYEpsB05GOb53vjqpyE9GUhlDQ4jLSoB5q9kg==",
             "dev": true,
             "dependencies": {
                 "undici-types": "~5.26.4"
@@ -8537,9 +8537,9 @@
             "dev": true
         },
         "@types/node": {
-            "version": "20.11.6",
-            "resolved": "https://registry.npmjs.org/@types/node/-/node-20.11.6.tgz",
-            "integrity": "sha512-+EOokTnksGVgip2PbYbr3xnR7kZigh4LbybAfBAw5BpnQ+FqBYUsvCEjYd70IXKlbohQ64mzEYmMtlWUY8q//Q==",
+            "version": "20.11.10",
+            "resolved": "https://registry.npmjs.org/@types/node/-/node-20.11.10.tgz",
+            "integrity": "sha512-rZEfe/hJSGYmdfX9tvcPMYeYPW2sNl50nsw4jZmRcaG0HIAb0WYEpsB05GOb53vjqpyE9GUhlDQ4jLSoB5q9kg==",
             "dev": true,
             "requires": {
                 "undici-types": "~5.26.4"
