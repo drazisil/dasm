@@ -34,7 +34,7 @@
         "@types/eslint": "9.6.1",
         "@types/node": "22.15.30",
         "@types/tap": "18.0.0",
-        "eslint": "9.28.0",
+        "eslint": "9.29.0",
         "eslint-config-prettier": "10.1.5",
         "eslint-plugin-prettier": "5.4.1",
         "jest": "29.7.0",
